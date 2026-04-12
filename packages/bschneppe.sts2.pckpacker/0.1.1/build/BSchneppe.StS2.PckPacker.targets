@@ -1,0 +1,41 @@
+<Project>
+
+  <!-- Default property values — consumers can override these in their .csproj -->
+  <PropertyGroup>
+    <PckPackerEnabled Condition="'$(PckPackerEnabled)' == ''">true</PckPackerEnabled>
+    <PckPackerSourceDir Condition="'$(PckPackerSourceDir)' == ''">$(MSBuildProjectDirectory)/$(MSBuildProjectName)/</PckPackerSourceDir>
+    <PckPackerResPrefix Condition="'$(PckPackerResPrefix)' == ''">$(MSBuildProjectName)</PckPackerResPrefix>
+    <PckPackerOutputPath Condition="'$(PckPackerOutputPath)' == ''">$(OutputPath)$(MSBuildProjectName).pck</PckPackerOutputPath>
+    <_PckPackerToolDir>$(MSBuildThisFileDirectory)../tools/net9.0/any/</_PckPackerToolDir>
+  </PropertyGroup>
+
+  <Target Name="PackPck"
+          AfterTargets="Build"
+          Condition="'$(PckPackerEnabled)' == 'true' And Exists('$(PckPackerSourceDir)')">
+
+    <Exec Command='"$(DOTNET_HOST_PATH)" "$(MSBuildThisFileDirectory)../tools/net9.0/any/StS2PckPacker.dll" "$(PckPackerSourceDir)" "$(PckPackerResPrefix)" "$(PckPackerOutputPath)"'
+          IgnoreExitCode="true"
+          ConsoleToMSBuild="true">
+      <Output TaskParameter="ExitCode" PropertyName="_PckPackerExitCode" />
+      <Output TaskParameter="ConsoleOutput" PropertyName="_PckPackerOutput" />
+    </Exec>
+
+    <!-- Exit code 0 = success, 2 = unsupported files (skip gracefully), anything else = error -->
+    <PropertyGroup>
+      <PckPackerSkipped Condition="'$(_PckPackerExitCode)' == '2'">true</PckPackerSkipped>
+    </PropertyGroup>
+
+    <Message Condition="'$(_PckPackerExitCode)' == '0'"
+             Text="PCK packed: $(PckPackerOutputPath)"
+             Importance="high" />
+
+    <Message Condition="'$(_PckPackerExitCode)' == '2'"
+             Text="PCK packing skipped — unsupported files detected. Use Godot export instead. $(_PckPackerOutput)"
+             Importance="high" />
+
+    <Error Condition="'$(_PckPackerExitCode)' != '0' And '$(_PckPackerExitCode)' != '2'"
+           Text="PCK packing failed (exit code $(_PckPackerExitCode)): $(_PckPackerOutput)" />
+
+  </Target>
+
+</Project>

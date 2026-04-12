@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doom_sfx", "doom_sfx.csproj", "{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{33BE724E-B02A-4E84-9E5E-0D0D62D0BCCB}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5766BCA8-7446-43D6-B08F-A5D0E5FA03AE}
+	EndGlobalSection
+EndGlobal

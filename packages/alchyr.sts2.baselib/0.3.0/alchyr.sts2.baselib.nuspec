@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Alchyr.Sts2.BaseLib</id>
+    <version>0.3.0</version>
+    <title>BaseLib-StS2</title>
+    <authors>Alchyr</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <description>Mod for Slay the Spire 2 providing utilities and features for other mods.</description>
+    <releaseNotes>correct version number</releaseNotes>
+    <tags>c#</tags>
+    <repository type="git" url="https://github.com/Alchyr/BaseLib-StS2" commit="4ba70a5a3ed6b8a7783ba9a5e52edf4e35113db8" />
+  </metadata>
+</package>

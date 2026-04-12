@@ -1,0 +1,11 @@
+{
+  "id": "doom_sfx",
+  "name": "Doom SFX",
+  "author": "mushcalli",
+  "description": "Adds the \"DOOM!!\" from BreadEater's Marvel Tokon video whenever an enemy dies to Doom, or whenever a lot of Doom is applied at once.",
+  "version": "v1.0.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": ["BaseLib"],
+  "affects_gameplay": false
+}

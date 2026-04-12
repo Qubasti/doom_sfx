@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>BSchneppe.StS2.PckPacker</id>
+    <version>0.1.1</version>
+    <authors>BSchneppe</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/BSchneppe/StS2PckPacker</projectUrl>
+    <description>Standalone PCK packer for Slay the Spire 2 mods. Produces Godot 4.5 format-v3 PCK files without requiring the Godot editor. Converts PNGs to ctex, generates import remaps, and packs assets automatically on build.</description>
+    <tags>godot slay-the-spire-2 sts2 modding pck</tags>
+    <repository type="git" url="https://github.com/BSchneppe/StS2PckPacker" commit="c843aff0d749d5a19c56b8bde11cb91a8d01c2e4" />
+  </metadata>
+</package>

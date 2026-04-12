@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Krafs.Publicizer</id>
+    <version>2.3.0</version>
+    <title>Publicizer</title>
+    <authors>Krafs</authors>
+    <developmentDependency>true</developmentDependency>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/krafs/Publicizer</projectUrl>
+    <description>MSBuild library for allowing direct access to non-public members in .NET assemblies.</description>
+    <copyright>© Krafs 2024</copyright>
+    <tags>msbuild accesschecks public publicizer</tags>
+    <repository type="git" url="https://github.com/krafs/Publicizer.git" commit="91f9f5ad6589da81dd240075186d1c048a53929c" />
+  </metadata>
+</package>
