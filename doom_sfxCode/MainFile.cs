@@ -19,37 +19,44 @@ namespace doom_sfx.doom_sfxCode
         public const string ModId = "doom_sfx"; //At the moment, this is used only for the Logger and harmony names.
         public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } = new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
 
-        public static AudioStreamMP3 NormalStream;
-        public static AudioStreamMP3 BoostedStream;
+        public static AudioStreamMP3 ApplyDoomAudioLink; // variable for audio config n shit
+        public static AudioStreamMP3 DeathDoomAudioLink;
 
-        public static void Initialize()
-        {
-            NormalStream = AudioStreamMP3.LoadFromFile("res://.godot/imported/doom.mp3-89fe55d2785ac93ed4da2ea3779df44f.mp3str");
-            BoostedStream = AudioStreamMP3.LoadFromFile("res://.godot/imported/doom_bass_boosted.mp3-800311521de7ada1a4dee6c1e3663817.mp3str");
+       public static void Initialize()
+{
+    NormalStream = AudioStreamMP3.LoadFromFile(DoomSfxConfig.NormalAudioPath);
+    BoostedStream = AudioStreamMP3.LoadFromFile(DoomSfxConfig.BoostedAudioPath);
 
-            ModConfigRegistry.Register(ModId, new DoomSfxConfig());
+    ModConfigRegistry.Register(ModId, new DoomSfxConfig());
 
-            Harmony harmony = new(ModId);
-
-            harmony.PatchAll();
-        }
+    Harmony harmony = new(ModId);
+    harmony.PatchAll();
+}
     }
 
-    internal class DoomSfxConfig : SimpleModConfig {
-        public static bool Enabled { get; set; } = true;
+   internal class DoomSfxConfig : SimpleModConfig {
+    public static bool Enabled { get; set; } = true;
 
-        [ConfigSection("Settings")]
-        [ConfigVisibleIfAttribute(nameof(Enabled))]
-        public static bool DoThresholdSfx { get; set; } = true;
+    [ConfigSection("Settings")]
+    [ConfigVisibleIfAttribute(nameof(Enabled))]
+    public static bool DoThresholdSfx { get; set; } = true;
 
-        [ConfigVisibleIfAttribute(nameof(_ThresholdEnabled))]
-        [SliderRange(1, 100)]
-        public static int ThresholdValue { get; set; } = 20;
+    [ConfigVisibleIfAttribute(nameof(_ThresholdEnabled))]
+    [SliderRange(1, 100)]
+    public static int ThresholdValue { get; set; } = 20;
 
-        public static bool _ThresholdEnabled() {
-            return Enabled && DoThresholdSfx;
-        }
+    // added these new configs
+    [ConfigSection("Audio Files")]
+    [ConfigVisibleIfAttribute(nameof(Enabled))]
+    public static string ApplyDoomAudioLink { get; set; } = "res://.godot/imported/doom.mp3-89fe55d2785ac93ed4da2ea3779df44f.mp3str";
+
+    [ConfigVisibleIfAttribute(nameof(Enabled))]
+    public static string DeathDoomAudioLink { get; set; } = "res://.godot/imported/doom_bass_boosted.mp3-800311521de7ada1a4dee6c1e3663817.mp3str";
+
+    public static bool _ThresholdEnabled() {
+        return Enabled && DoThresholdSfx;
     }
+}
 
 
     [HarmonyPatch(typeof(Hook))]
